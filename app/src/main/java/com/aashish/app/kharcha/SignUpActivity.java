@@ -28,9 +28,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     Toast toast;
     FirebaseDatabase database;
- private FirebaseAuth firebaseAuth;
- FirebaseFirestore firebaseFirestore;
- FirebaseUser firebaseUser;
+    private FirebaseAuth firebaseAuth;
+    FirebaseFirestore firebaseFirestore;
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,8 @@ public class SignUpActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         DatabaseReference myRef;
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        firebaseFirestore=FirebaseFirestore.getInstance();
-        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
     }
 
@@ -68,58 +68,55 @@ public class SignUpActivity extends AppCompatActivity {
                 //myRef.child("Name").setValue(yourName);
                 //myRef.child("Number").setValue(phoneNumber);
                 //myRef.child("Password").setValue(password);
-       firebaseAuth.createUserWithEmailAndPassword(emailAddress.getText().toString().trim(),password.getText().toString().trim()).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
+                firebaseAuth.createUserWithEmailAndPassword(emailAddress.getText().toString().trim(), password.getText().toString().trim()).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
 //                        Intent intent = new Intent(SignUpActivity.this,HomeActivity.class);
 //                        startActivity(intent);
 //                        finish();
-                        UserData.userID = localDatabaseHelper.getUserID(emailAddress.getText().toString());
-                        HashMap<String,Object> hashMap=new HashMap<>();
-                        hashMap.put("name",yourName.getText().toString().trim());
-                        hashMap.put("email",emailAddress.getText().toString());
-                        hashMap.put("phonenum",phoneNumber.getText().toString().trim());
-                        hashMap.put("password",password.getText().toString());
-                        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-                        String uid=firebaseUser.getUid();
-                        firebaseFirestore.collection("users").document(phoneNumber.getText().toString()).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
+                            UserData.userID = localDatabaseHelper.getUserID(emailAddress.getText().toString());
+                            HashMap<String, Object> hashMap = new HashMap<>();
+                            hashMap.put("name", yourName.getText().toString().trim());
+                            hashMap.put("email", emailAddress.getText().toString());
+                            hashMap.put("phonenum", phoneNumber.getText().toString().trim());
+                            hashMap.put("password", password.getText().toString());
+                            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                            String uid = firebaseUser.getUid();
+                            firebaseFirestore.collection("users").document(phoneNumber.getText().toString()).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
 
-                                if (task.isSuccessful()){
+                                    if (task.isSuccessful()) {
 
-                                    Intent intent=new Intent(SignUpActivity.this,HomeActivity.class);
-                                    startActivity(intent);
-                                    Toast.makeText(SignUpActivity.this, "success", Toast.LENGTH_SHORT).show();
-                                    finish();
+                                        Intent intent = new Intent(SignUpActivity.this, HomeActivity.class);
+                                        startActivity(intent);
+                                        Toast.makeText(SignUpActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                        finish();
+
+                                    } else {
+                                        Toast.makeText(SignUpActivity.this, "error", Toast.LENGTH_SHORT).show();
+                                    }
 
                                 }
-                                else {
-                                    Toast.makeText(SignUpActivity.this, "error", Toast.LENGTH_SHORT).show();
-                                }
+                            });
 
-                            }
-                        });
+
+                        } else {
+                            FirebaseAuthException e = (FirebaseAuthException) task.getException();
+                            Toast.makeText(getApplicationContext(), "error" + " " + e.getMessage(), Toast.LENGTH_LONG).show();
+
+                        }
 
 
                     }
-                    else{
-                        FirebaseAuthException e = (FirebaseAuthException) task.getException();
-                        Toast.makeText(getApplicationContext(), "error" + " " + e.getMessage(), Toast.LENGTH_LONG).show();
-
-                    }
-
-
-                }
-            });
+                });
 
 //                Intent toDashboard = new Intent(this, HomeActivity.class);
 //                toDashboard.putExtra(LocalDatabaseHelper.COLUMN_ID, localDatabaseHelper.getUserID(emailAddress.getText().toString()));
 //                startActivity(toDashboard);
 //                displayTosat(R.string.userSuccessfullyAdded);
-            }
-            else {
+            } else {
                 displayTosat(R.string.userAlreadyExistError);
             }
         }
@@ -127,17 +124,17 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean isSignUpDetailsValid(EditText yourName, EditText emailAddress, EditText phoneNumber, EditText password, EditText confirmPassword) {
-        if (yourName.getText().toString().isEmpty()){
+        if (yourName.getText().toString().isEmpty()) {
             displayError(R.string.emptyYourNameError, yourName);
             return false;
         }
 
-        if (emailAddress.getText().toString().isEmpty()){
+        if (emailAddress.getText().toString().isEmpty()) {
             displayError(R.string.emptyEmailAddressError, emailAddress);
             return false;
         }
 
-        if (phoneNumber.getText().toString().isEmpty()){
+        if (phoneNumber.getText().toString().isEmpty()) {
             displayError(R.string.emptyPhoneNumberError, phoneNumber);
             return false;
         }
@@ -146,12 +143,12 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         }
 
-        if (confirmPassword.getText().toString().isEmpty()){
+        if (confirmPassword.getText().toString().isEmpty()) {
             displayError(R.string.emptyConfirmPasswordError, confirmPassword);
             return false;
         }
 
-        if (!password.getText().toString().equals(confirmPassword.getText().toString())){
+        if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
             displayError(R.string.passwordNotMatchError, confirmPassword);
             return false;
         }
@@ -168,7 +165,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void displayError(int message, View view) {
-        Animation animShake = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.shake);
+        Animation animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
         view.setAnimation(animShake);
         view.startAnimation(animShake);
 
@@ -180,7 +177,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void displayError(String message, View view) {
-        Animation animShake = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.shake);
+        Animation animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
         view.setAnimation(animShake);
         view.startAnimation(animShake);
 
@@ -191,11 +188,10 @@ public class SignUpActivity extends AppCompatActivity {
         toast.show();
     }
 
-    private boolean isPasswordValid(String password)
-    {
+    private boolean isPasswordValid(String password) {
         EditText passwordEditText = findViewById(R.id.password);
 
-        if (password.isEmpty()){
+        if (password.isEmpty()) {
             displayError(R.string.emptyPasswordError, passwordEditText);
             return false;
         }
@@ -208,22 +204,18 @@ public class SignUpActivity extends AppCompatActivity {
         int lowerCount = 0;
 
         // Count all types of characters
-        for(int i = 0; i < password.length(); i++){
+        for (int i = 0; i < password.length(); i++) {
             char passwordChar = password.charAt(i);
 
-            if(Character.isUpperCase(passwordChar)){
+            if (Character.isUpperCase(passwordChar)) {
                 upperCount++;
-            }
-            else if(Character.isLowerCase(passwordChar)){
+            } else if (Character.isLowerCase(passwordChar)) {
                 lowerCount++;
-            }
-            else if(Character.isDigit(passwordChar)){
+            } else if (Character.isDigit(passwordChar)) {
                 numberCount++;
-            }
-            else if((passwordChar >= 33 && passwordChar <= 46) || passwordChar == 64){
+            } else if ((passwordChar >= 33 && passwordChar <= 46) || passwordChar == 64) {
                 specialCount++;
-            }
-            else {
+            } else {
                 displayError(passwordChar + " character is not supported", passwordEditText);
                 return false;
             }
@@ -232,7 +224,7 @@ public class SignUpActivity extends AppCompatActivity {
         String errorMessage = "";
 
         if (password.length() >= minLen && password.length() <= maxLen) {
-            if(specialCount >= 1 && lowerCount >= 1 && upperCount >= 1 && numberCount >= 1) {
+            if (specialCount >= 1 && lowerCount >= 1 && upperCount >= 1 && numberCount >= 1) {
                 return true;
             }
         }

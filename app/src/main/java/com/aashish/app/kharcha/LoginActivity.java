@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Toast toast;
     private FirebaseAuth firebaseAuth;
+
     @SuppressLint("ShowToast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,16 +38,15 @@ public class LoginActivity extends AppCompatActivity {
         EditText id = findViewById(R.id.emailAddress);
         EditText password = findViewById(R.id.password);
 
-        if (id.getText().toString().isEmpty()){
+        if (id.getText().toString().isEmpty()) {
             displayError(R.string.emptyIDError, id);
             return;
         }
 
-        if (password.getText().toString().isEmpty()){
+        if (password.getText().toString().isEmpty()) {
             displayError(R.string.emptyPasswordError, password);
             return;
-        }
-        else {
+        } else {
 
             firebaseAuth.signInWithEmailAndPassword(id.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()) {
 
-                        Intent inn = new Intent(LoginActivity.this,HomeActivity.class);
+                        Intent inn = new Intent(LoginActivity.this, HomeActivity.class);
                         startActivity(inn);
                         finish();
 
@@ -67,10 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-
-
         LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(LoginActivity.this, null, null, 1);
-
 
 
         // TODO: Remove this if in final product
@@ -84,8 +81,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (id.getText().toString().contains("@")) {
             idType = IDType.Email;
-        }
-        else {
+        } else {
             idType = IDType.PhoneNumber;
         }
 
@@ -93,8 +89,7 @@ public class LoginActivity extends AppCompatActivity {
             Intent toDashboard = new Intent(this, HomeActivity.class);
             UserData.userID = localDatabaseHelper.getUserID(id.getText().toString(), idType);
             startActivity(toDashboard);
-        }
-        else {
+        } else {
             displayError(R.string.loginErrorMessage);
         }
     }
@@ -108,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void displayError(int message, View view) {
-        Animation animShake = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.shake);
+        Animation animShake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
         view.setAnimation(animShake);
         view.startAnimation(animShake);
 

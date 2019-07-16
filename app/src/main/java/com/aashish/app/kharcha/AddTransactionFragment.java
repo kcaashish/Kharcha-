@@ -240,14 +240,14 @@ public class AddTransactionFragment extends Fragment {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (isTooLarge()) {
-                changedTextSize  = defaultTextSize - (value.getText().toString().trim().length() - 8) * 6;
+                changedTextSize = defaultTextSize - (value.getText().toString().trim().length() - 8) * 6;
                 value.setTextSize(TypedValue.COMPLEX_UNIT_DIP, changedTextSize);
-            }
-            else {
+            } else {
                 value.setTextSize(TypedValue.COMPLEX_UNIT_DIP, defaultTextSize);
                 changedTextSize = defaultTextSize;
             }
         }
+
         private boolean isTooLarge() {
             return value.getText().toString().trim().length() > 7;
         }

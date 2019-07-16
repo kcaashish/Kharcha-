@@ -13,12 +13,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public  void loginButton_onClick(View v){
+    public void loginButton_onClick(View v) {
         Intent toLoginPage = new Intent(this, LoginActivity.class);
         startActivity(toLoginPage);
     }
 
-    public void signUpButton_onClick(View v){
+    public void signUpButton_onClick(View v) {
         Intent toSignUpPage = new Intent(this, SignUpActivity.class);
         startActivity(toSignUpPage);
     }

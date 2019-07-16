@@ -6,9 +6,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-/**
- * Created by shantam on 14-03-2018.
- */
 
 public class FirebaseDBHelper {
     private static DatabaseReference myRef;
@@ -19,7 +16,7 @@ public class FirebaseDBHelper {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value=dataSnapshot.getValue(String.class);
+                String value = dataSnapshot.getValue(String.class);
 
             }
 
@@ -28,8 +25,8 @@ public class FirebaseDBHelper {
 
             }
         });
-        String child=number;
-        myRef=database.getReference("Users").child(child);
+        String child = number;
+        myRef = database.getReference("Users").child(child);
         myRef.child("Email").setValue(email);
         myRef.child("Name").setValue(name);
         myRef.child("Number").setValue(number);

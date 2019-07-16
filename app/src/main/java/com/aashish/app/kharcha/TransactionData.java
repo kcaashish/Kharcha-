@@ -10,13 +10,13 @@ public class TransactionData {
     private String description;
     private String transactionType;
 
-    public  TransactionData(int id, String amount, Date dateTime, String category, String description, String transactionType) {
+    public TransactionData(int id, String amount, Date dateTime, String category, String description, String transactionType) {
         this.id = id;
         this.amount = amount;
         this.dateTime = dateTime;
         this.category = category;
         this.description = description;
-        this.transactionType = transactionType.substring(0,1).toUpperCase() + transactionType.substring(1).toLowerCase();
+        this.transactionType = transactionType.substring(0, 1).toUpperCase() + transactionType.substring(1).toLowerCase();
     }
 
     public int getId() {

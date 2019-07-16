@@ -162,7 +162,7 @@ public class DashboardFragment extends Fragment {
         customDatesBarChart.animateXY(500, 500);
         customDatesBarChart.invalidate();
 
-        transactionListViewAdapter = new TransactionListViewAdapter(localDatabaseHelper.getTransactionData(UserData.userID, fromDate , toDate));
+        transactionListViewAdapter = new TransactionListViewAdapter(localDatabaseHelper.getTransactionData(UserData.userID, fromDate, toDate));
         transactionListView.setAdapter(transactionListViewAdapter);
     }
 
@@ -252,7 +252,7 @@ public class DashboardFragment extends Fragment {
 
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            transactionData = (TransactionData)transactionListViewAdapter.getItem(i);
+            transactionData = (TransactionData) transactionListViewAdapter.getItem(i);
 
             initialisePopUp();
             displayTransactionDetails();
@@ -293,7 +293,7 @@ public class DashboardFragment extends Fragment {
             transactionIDTextView.setText(id);
             isEdited = false;
 
-            transactionDataPopUp.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(180,255,255,255)));
+            transactionDataPopUp.getWindow().setBackgroundDrawable(new ColorDrawable(Color.argb(180, 255, 255, 255)));
             transactionDataPopUp.show();
         }
 
@@ -409,8 +409,7 @@ public class DashboardFragment extends Fragment {
                     localDatabaseHelper.updateTransactionDetails(transactionData.getId(), transactionType, transactionAmountEditText.getText().toString(), UserData.categories.indexOf(transactionCategorySpinner.getSelectedItem().toString()) + 1, transactionDate, transactionDescriptionEditText.getText().toString());
 
                     refreashListItemsAndChart();
-                }
-                else {
+                } else {
                     editButton.setText("Accept");
                     editTransactionDetails();
                 }

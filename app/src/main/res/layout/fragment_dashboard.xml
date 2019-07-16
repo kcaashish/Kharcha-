@@ -1,10 +1,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@drawable/activity_main_background"
+    android:orientation="vertical"
     tools:context="com.aashish.app.kharcha.DashboardFragment">
 
     <LinearLayout
@@ -13,122 +13,125 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
+            android:id="@+id/lastMonthCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lastMonthCardView"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
-            app:contentPadding="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
             app:cardBackgroundColor="@color/dashboardCardViewBackground"
-            app:cardCornerRadius="5dp">
+            app:cardCornerRadius="5dp"
+            app:contentPadding="8dp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Last Month"
-                    android:textSize="12dp"
-                    android:textStyle="bold"
-                    android:textColor="#FFFF"
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/lastMonthTextView"/>
 
                 <TextView
+                    android:id="@+id/lastMonthTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$1000"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="#c753ff61"
                     android:layout_centerHorizontal="true"
+                    android:text="Last Month"
+                    android:textColor="#FFFF"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lastMonthAmountTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/lastMonthTextView"
-                    android:id="@+id/lastMonthAmountTextView"/>
+                    android:layout_centerHorizontal="true"
+                    android:text="$1000"
+                    android:textColor="#c753ff61"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/lastMonthPieChart"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    android:id="@+id/lastMonthPieChart"
-                    android:layout_below="@id/lastMonthAmountTextView"/>
+                    android:layout_below="@id/lastMonthAmountTextView" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/customDaysCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/customDaysCardView"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
-            app:contentPadding="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
             app:cardBackgroundColor="@color/dashboardCardViewBackground"
-            app:cardCornerRadius="5dp">
+            app:cardCornerRadius="5dp"
+            app:contentPadding="8dp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <LinearLayout
+                    android:id="@+id/customDatesLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center_horizontal"
-                    android:id="@+id/customDatesLinearLayout">
+                    android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/fromDayTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
-                        android:text="20/02/2017"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:textColor="@color/BackgroundWhiteColor"
                         android:background="@drawable/signup_button_background"
-                        android:id="@+id/fromDayTextView" />
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
+                        android:text="20/02/2017"
+                        android:textColor="@color/BackgroundWhiteColor"
+                        android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:text="-"
                         android:textColor="@color/BackgroundWhiteColor"
-                        android:textSize="20dp"
-                        android:text="-"/>
+                        android:textSize="20dp" />
 
                     <TextView
+                        android:id="@+id/toDayTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
+                        android:background="@drawable/signup_button_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="5dp"
                         android:text="22/02/2017"
                         android:textColor="@color/BackgroundWhiteColor"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
-                        android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:background="@drawable/signup_button_background"
-                        android:id="@+id/toDayTextView" />
+                        android:textSize="20dp" />
 
                 </LinearLayout>
 
                 <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/customDatesBarChart"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
                     android:layout_below="@+id/customDatesLinearLayout"
-                    android:id="@+id/customDatesBarChart"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp" />
 
                 <ListView
+                    android:id="@+id/transactionListView"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    android:id="@+id/transactionListView"
-                    android:nestedScrollingEnabled="true"
-                    android:layout_below="@+id/customDatesBarChart"/>
+                    android:layout_below="@+id/customDatesBarChart"
+                    android:nestedScrollingEnabled="true" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>

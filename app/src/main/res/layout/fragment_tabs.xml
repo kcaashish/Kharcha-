@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/activity_main_background"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.aashish.app.kharcha.SettingsFragment">
 
     <android.support.design.widget.CoordinatorLayout
@@ -20,10 +20,10 @@
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/result_tabs"
-                app:tabTextColor="#FFFFFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabMode="scrollable"/>
+                app:tabMode="scrollable"
+                app:tabTextColor="#FFFFFF" />
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager

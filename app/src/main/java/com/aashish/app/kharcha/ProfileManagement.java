@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 import android.widget.Button;
+
 public class ProfileManagement extends Fragment {
 
     private ViewSwitcher viewSwitcher;
