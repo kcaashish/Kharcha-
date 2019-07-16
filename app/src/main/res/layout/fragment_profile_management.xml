@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/activity_main_background">
+    android:background="@drawable/background">
 <ViewSwitcher
     android:id="@+id/profileViewSwitcher"
     android:layout_width="match_parent"
@@ -165,9 +165,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="54dp"
-        android:background="@drawable/login_button_background"
+        android:background="@drawable/signup_button_background"
         android:text="Change Profile Settings"
         android:paddingStart="20dp"
+        android:textColor="#ffffff"
         android:paddingEnd="20dp"
         android:layout_marginTop="40dp"
         android:layout_below="@+id/textView10"
@@ -329,7 +330,7 @@
             android:layout_marginBottom="20dp"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:background="@drawable/login_button_background"
+            android:background="@drawable/signup_button_background"
             android:layout_below="@+id/confirmPasswordInputLayout"
             android:text="Cancel"
             android:textSize="10dp"/>

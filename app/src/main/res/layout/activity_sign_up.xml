@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/activity_main_background"
-    tools:context="com.aashish.app.kharcha.SignUpActivity">
+    android:background="@drawable/background"
+    tools:context="com.aashish.app.kharcha.SignUpActivity"
+    android:orientation="vertical">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Login"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/signup_button_background"
+        android:textColor="#ffffff"
+
+        />
 
     <TextView
         android:id="@+id/signUpTextView"
@@ -12,11 +24,12 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:text="@string/signUpButtonName"
+        android:text=" Get started"
         android:textColor="#FFFFFF"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"/>
+        android:gravity="left"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/yourNameInputLayout"
@@ -32,10 +45,12 @@
         <EditText
             android:id="@+id/yourName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/signup_button_background"
             android:textColor="#FFFFFF"
             android:inputType="textPersonName"
-            android:hint="@string/userNameEditTextHint"/>
+            android:hint="  FULL NAME"
+            />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -53,9 +68,11 @@
             android:id="@+id/emailAddress"
             android:layout_width="match_parent"
             android:textColor="#FFFFFF"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:inputType="textEmailAddress"
-            android:hint="@string/emailAddressEditTextHint"/>
+            android:background="@drawable/signup_button_background"
+            android:hint="  EMAIL"
+            />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -73,9 +90,10 @@
             android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:textColor="#FFFFFF"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:inputType="phone"
-            android:hint="@string/phoneNumberEditTextHint"/>
+            android:background="@drawable/signup_button_background"
+            android:hint="  PHONE NUMBER"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -94,9 +112,10 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:textColor="#FFFFFF"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/signup_button_background"
             android:inputType="textPassword"
-            android:hint="@string/passwordEditTextHint"/>
+            android:hint="  PASSWORD"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -114,9 +133,10 @@
             android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
             android:textColor="#FFFFFF"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/signup_button_background"
             android:inputType="textPassword"
-            android:hint="@string/confirmPasswordEditTextHint"/>
+            android:hint="  CONFIRM PASSWORD"/>
     </android.support.design.widget.TextInputLayout>
 
     <Button
@@ -125,9 +145,9 @@
         android:layout_height="40dp"
         android:text="@string/signUpButtonName"
         android:layout_below="@+id/confirmPasswordInputLayout"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:layout_gravity="center"
         android:background="@drawable/login_button_background"
         android:onClick="signUpButton_onClick"/>
 
-</RelativeLayout>
+</LinearLayout>
