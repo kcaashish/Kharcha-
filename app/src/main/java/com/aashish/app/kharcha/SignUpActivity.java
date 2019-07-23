@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -42,8 +43,24 @@ public class SignUpActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
+        Button loginButton2 = findViewById(R.id.loginButton2);
+
+        loginButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openActivity();
+
+            }
+        });
 
     }
+
+    public void openActivity() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+
+    }
+
 
     public void signUpButton_onClick(View view) {
         // TODO: OTP for Phone Number validation
